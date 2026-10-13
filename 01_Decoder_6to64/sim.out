@@ -1,0 +1,67 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2009.vpi";
+S_0x64c9bcb7fa80 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x64c9bcb7fc10 .scope module, "tb_decoder_6to64" "tb_decoder_6to64" 3 2;
+ .timescale -9 -12;
+v0x64c9bcb93210_0 .var "I", 5 0;
+v0x64c9bcb93300_0 .net "Y", 63 0, L_0x64c9bcba3610;  1 drivers
+v0x64c9bcb933d0_0 .var "expected_Y", 63 0;
+v0x64c9bcb934a0_0 .var/i "i", 31 0;
+S_0x64c9bcb46490 .scope module, "DUT" "decoder_6to64" 3 9, 4 1 0, S_0x64c9bcb7fc10;
+ .timescale 0 0;
+    .port_info 0 /INPUT 6 "I";
+    .port_info 1 /OUTPUT 64 "Y";
+v0x64c9bcb46670_0 .net "I", 5 0, v0x64c9bcb93210_0;  1 drivers
+v0x64c9bcb93010_0 .net "Y", 63 0, L_0x64c9bcba3610;  alias, 1 drivers
+L_0x74a73326e018 .functor BUFT 1, C4<0000000000000000000000000000000000000000000000000000000000000001>, C4<0>, C4<0>, C4<0>;
+v0x64c9bcb930f0_0 .net/2u *"_ivl_0", 63 0, L_0x74a73326e018;  1 drivers
+L_0x64c9bcba3610 .shift/l 64, L_0x74a73326e018, v0x64c9bcb93210_0;
+    .scope S_0x64c9bcb7fc10;
+T_0 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x64c9bcb934a0_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0x64c9bcb934a0_0;
+    %cmpi/s 64, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v0x64c9bcb934a0_0;
+    %pad/s 6;
+    %store/vec4 v0x64c9bcb93210_0, 0, 6;
+    %pushi/vec4 1, 0, 64;
+    %ix/getv 4, v0x64c9bcb93210_0;
+    %shiftl 4;
+    %store/vec4 v0x64c9bcb933d0_0, 0, 64;
+    %delay 1000, 0;
+    %load/vec4 v0x64c9bcb93300_0;
+    %load/vec4 v0x64c9bcb933d0_0;
+    %cmp/ne;
+    %jmp/0xz  T_0.2, 6;
+    %vpi_call/w 3 23 "$display", "FAIL: I=%0d, Expected=%h, Got=%h", v0x64c9bcb93210_0, v0x64c9bcb933d0_0, v0x64c9bcb93300_0 {0 0 0};
+    %vpi_call/w 3 25 "$fatal", 32'sb00000000000000000000000000000001, "Decoder verification failed" {0 0 0};
+T_0.2 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v0x64c9bcb934a0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %store/vec4 v0x64c9bcb934a0_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %vpi_call/w 3 29 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "tb_decoder_6to64.sv";
+    "decoder_6to64.sv";
