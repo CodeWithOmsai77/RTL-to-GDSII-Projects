@@ -28,7 +28,7 @@ The goal is to understand the complete engineering process—not just make code 
 
 ## 🏆 Projects
 
-### 🔢 01 · [6-to-64 Decoder](Workflow/01_Decoder_6to64/README.md)
+### 🔢 01 · [6-to-64 Decoder](Workflow/01_Decoder_6to64)
 
 A **combinational SystemVerilog decoder** that converts a 6-bit input into a 64-bit one-hot output. For each input value from 0 to 63, exactly one output bit is asserted.
 
@@ -36,7 +36,7 @@ A **combinational SystemVerilog decoder** that converts a 6-bit input into a 64-
 
 ---
 
-### ⏱️ 02 · [Resettable D Flip-Flop](Workflow/02_D_ff/README.md)
+### ⏱️ 02 · [Resettable D Flip-Flop](Workflow/02_D_ff)
 
 A **positive-edge-triggered D flip-flop** with an active-high asynchronous reset, written in SystemVerilog. The output captures the input at the rising clock edge and clears immediately when reset is asserted.
 
@@ -44,7 +44,7 @@ A **positive-edge-triggered D flip-flop** with an active-high asynchronous reset
 
 ---
 
-### 🔁 03 · [JK Flip-Flop](Workflow/03_JK_FF/README.md)
+### 🔁 03 · [JK Flip-Flop](Workflow/03_JK_FF)
 
 A **positive-edge-triggered JK flip-flop** with an active-high asynchronous reset. Its J and K inputs select one of four state operations: hold, reset, set, or toggle.
 
