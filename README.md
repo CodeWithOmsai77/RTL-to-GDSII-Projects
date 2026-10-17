@@ -52,6 +52,17 @@ The goal is to understand the complete engineering process—not just make code 
       </ul>
       <p><a href="Workflow/02_D_ff/README.md">📘 Project documentation</a></p>
     </td>
+    <td width="50%" valign="top">
+      <h3>🔁 <a href="Workflow/03_JK_FF/">03 · JK Flip-Flop</a></h3>
+      <p>A positive-edge-triggered JK flip-flop with an active-high asynchronous reset, implemented in SystemVerilog.</p>
+      <ul>
+        <li>Python/Cocotb testbench with Verilator</li>
+        <li>Checks hold, reset, set, and toggle input combinations</li>
+        <li>ORFS physical-design artifacts for Nangate45</li>
+        <li>Saved layout image, ODB, DEF, GDS, and mapped netlist</li>
+      </ul>
+      <p><a href="Workflow/03_JK_FF/README.md">📘 Project documentation</a></p>
+    </td>
   </tr>
 </table>
 
@@ -61,7 +72,7 @@ The goal is to understand the complete engineering process—not just make code 
 |---|---|
 | SystemVerilog | RTL design and HDL testbench for the decoder |
 | Verilator | Simulation backend for the Cocotb DFF test |
-| Cocotb | Python-based DFF functional verification |
+| Cocotb | Python-based DFF and JK FF functional verification |
 | GTKWave | Waveform inspection when tracing is enabled and waveform data is generated |
 | Yosys | RTL synthesis in the ORFS flow |
 | OpenROAD / OpenROAD Flow Scripts | Floorplanning and subsequent physical-design stages |
@@ -87,16 +98,31 @@ RTL-to-GDSII-Projects/
     │       ├── 6_final.odb
     │       ├── 6_final.def
     │       └── 6_final.gds
-    └── 02_D_ff/
+    ├── 02_D_ff/
+    │   ├── README.md
+    │   ├── Dff.sv
+    │   ├── tb_Dff.py
+    │   ├── run.py
+    │   ├── Dff.sdc
+    │   ├── Dff_config.mk
+    │   ├── Dff_layout.png
+    │   └── orfs/
+    │       └── results/nangate45/Dff/base/
+    │           ├── 6_final.odb
+    │           ├── 6_final.def
+    │           └── 6_final.gds
+    └── 03_JK_FF/
         ├── README.md
-        ├── Dff.sv
-        ├── tb_Dff.py
+        ├── JK_FF.sv
+        ├── tb_JK_FF.py
         ├── run.py
-        ├── Dff.sdc
-        ├── Dff_config.mk
-        ├── Dff_layout.png
+        ├── JK_FF.sdc
+        ├── JK_FF_config.mk
+        ├── JK_FF_layout.png
+        ├── JK_FF_netlist.v
+        ├── results.xml
         └── orfs/
-            └── results/nangate45/Dff/base/
+            └── results/nangate45/JK_FF/base/
                 ├── 6_final.odb
                 ├── 6_final.def
                 └── 6_final.gds
@@ -117,7 +143,7 @@ Generated files shown above are the artifacts currently retained for these proje
 
 ## 🎯 Next Steps
 
-- Add JK flip-flop RTL and a self-checking Cocotb testbench.
+- Strengthen JK flip-flop verification with reset re-assertion, repeated toggles, and checks that outputs remain stable between clock edges.
 - Add counters, shift registers, and FSM projects as they are completed.
 - Improve timing constraints and learn to interpret synthesis, timing, and physical-design reports.
 - Keep one README per project so its specification, verification, commands, outputs, and limitations are documented locally.
