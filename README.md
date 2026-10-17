@@ -28,44 +28,49 @@ The goal is to understand the complete engineering process—not just make code 
 
 ## 🏆 Projects
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🔢 <a href="Workflow/01_Decoder_6to64/">01 · 6-to-64 Decoder</a></h3>
-      <p>A combinational SystemVerilog decoder with a 6-bit input and a 64-bit one-hot output.</p>
-      <ul>
-        <li>Self-checking SystemVerilog testbench</li>
-        <li>Checks all 64 input values</li>
-        <li>Introductory ORFS physical-design run on Nangate45</li>
-        <li>Saved ODB, DEF, and GDS implementation artifacts</li>
-      </ul>
-      <p><a href="Workflow/01_Decoder_6to64/README.md">📘 Project documentation</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>⏱️ <a href="Workflow/02_D_ff/">02 · Resettable D Flip-Flop</a></h3>
-      <p>A positive-edge-triggered DFF with an active-high asynchronous reset, written in SystemVerilog.</p>
-      <ul>
-        <li>Python/Cocotb self-checking test</li>
-        <li>Verilator-based simulation runner</li>
-        <li>ORFS physical-design flow on Nangate45</li>
-        <li>Saved final database, DEF, and GDS implementation artifacts</li>
-      </ul>
-      <p><a href="Workflow/02_D_ff/README.md">📘 Project documentation</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🔁 <a href="Workflow/03_JK_FF/">03 · JK Flip-Flop</a></h3>
-      <p>A positive-edge-triggered JK flip-flop with an active-high asynchronous reset, implemented in SystemVerilog.</p>
-      <ul>
-        <li>Python/Cocotb testbench with Verilator</li>
-        <li>Checks hold, reset, set, and toggle input combinations</li>
-        <li>ORFS physical-design artifacts for Nangate45</li>
-        <li>Saved layout image, ODB, DEF, GDS, and mapped netlist</li>
-      </ul>
-      <p><a href="Workflow/03_JK_FF/README.md">📘 Project documentation</a></p>
-    </td>
-  </tr>
-</table>
+### 🔢 01 · [6-to-64 Decoder](Workflow/01_Decoder_6to64/README.md)
 
+A **combinational SystemVerilog decoder** that converts a 6-bit input into a 64-bit one-hot output. For each input value from 0 to 63, exactly one output bit is asserted.
+
+- **Design:** 6-bit input, 64-bit one-hot output, shift-based combinational logic.
+- **Verification:** Self-checking SystemVerilog testbench checks all 64 input combinations.
+- **Physical design:** Introductory OpenROAD Flow Scripts (ORFS) run on Nangate45.
+- **Artifacts:** Layout image, OpenDB database (`.odb`), DEF, and GDS output.
+- **Scope:** Educational flow; saved artifacts do not establish timing closure or signoff.
+
+📘 **[Read the decoder project README](Workflow/01_Decoder_6to64/README.md)**
+
+---
+
+### ⏱️ 02 · [Resettable D Flip-Flop](Workflow/02_D_ff/README.md)
+
+A **positive-edge-triggered D flip-flop** with an active-high asynchronous reset, written in SystemVerilog. The output captures the input at the rising clock edge and clears immediately when reset is asserted.
+
+- **Design:** One-bit state storage using `always_ff` and non-blocking assignment.
+- **Verification:** Python/Cocotb testbench run with Verilator; checks reset and capture of both data values.
+- **Physical design:** ORFS flow configured for the Nangate45 platform.
+- **Artifacts:** Layout image, final OpenDB database, DEF, GDS, and mapped Verilog netlist.
+- **Scope:** The 10 ns clock and zero I/O-delay values are learning assumptions, not validated product constraints.
+
+📘 **[Read the D flip-flop project README](Workflow/02_D_ff/README.md)**
+
+---
+
+### 🔁 03 · [JK Flip-Flop](Workflow/03_JK_FF/README.md)
+
+A **positive-edge-triggered JK flip-flop** with an active-high asynchronous reset. Its J and K inputs select one of four state operations: hold, reset, set, or toggle.
+
+- **Design:** SystemVerilog sequential state with combinational next-state logic.
+- **Verification:** Python/Cocotb testbench run with Verilator; exercises all four J/K combinations and checks the stored state after a rising clock edge.
+- **Physical design:** ORFS artifacts generated for Nangate45.
+- **Artifacts:** Layout image, final OpenDB database, DEF, GDS, and mapped Verilog netlist.
+- **Important RTL note:** In the current implementation, `Qn` is used as the **next-state signal**, not as a conventional inverted output.
+- **Constraints:** The JK SDC was updated to refer to the actual RTL ports. Review timing reports and constraint assumptions before drawing timing-closure conclusions.
+
+📘 **[Read the JK flip-flop project README](Workflow/03_JK_FF/README.md)**
+
+---
+ 
 ## 🧰 Toolchain
 
 | Tool | How it is used here |
