@@ -1,0 +1,7 @@
+format: verilog
+input_paths:
+  - /project/orfs/results/nangate45/SR_FF/base/1_synth_lec.v
+  - /project/orfs/results/nangate45/SR_FF/base/6_final_lec.v
+liberty_files:
+ - /OpenROAD-flow-scripts/flow/platforms/nangate45/lib/NangateOpenCellLibrary_typical.lib
+log_file: /project/orfs/logs/nangate45/SR_FF/base/6_final_lec_check.log

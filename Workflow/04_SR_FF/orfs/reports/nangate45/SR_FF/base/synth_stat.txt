@@ -1,0 +1,27 @@
+
+21. Printing statistics.
+
+=== SR_FF ===
+
+        +----------------------------Count including submodules.
+        |        +-------------------Area including submodules.
+        |        |        +----------Local count, excluding submodules.
+        |        |        |        +-Local area, excluding submodules.
+        |        |        |        | 
+       10        -       10        - wires
+       10        -       10        - wire bits
+        6        -        6        - public wires
+        6        -        6        - public wire bits
+        6        -        6        - ports
+        6        -        6        - port bits
+        -        -        -        - memories
+        -        -        -        - memory bits
+        -        -        -        - processes
+        5    8.778        5    8.778 cells
+        1     5.32        1     5.32   DFFR_X1
+        3    1.596        3    1.596   INV_X1
+        1    1.862        1    1.862   OAI21_X2
+
+   Chip area for module '\SR_FF': 8.778000
+     of which used for sequential elements: 5.320000 (60.61%)
+
