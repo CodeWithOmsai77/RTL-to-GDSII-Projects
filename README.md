@@ -51,14 +51,24 @@ A **positive-edge-triggered JK flip-flop** with an active-high asynchronous rese
 📘 **[Read the JK flip-flop project README](Workflow/03_JK_FF/README.md)**
 
 ---
- 
+
+### 🔀 04 · [SR Flip-Flop](Workflow/04_SR_FF)
+
+A **positive-edge-triggered SR flip-flop** with an active-high asynchronous reset. The S and R inputs implement hold, set, and reset operations; the `S=1, R=1` combination is treated as invalid in the RTL.
+
+The project includes SystemVerilog RTL, a Cocotb test, and OpenROAD physical-design results, including a layout image.
+
+🖼️ **[View the SR flip-flop layout](Workflow/04_SR_FF/SR_FF_layout.png)** · 📁 **[Open the SR flip-flop project](Workflow/04_SR_FF)**
+
+---
+
 ## 🧰 Toolchain
 
 | Tool | How it is used here |
 |---|---|
 | SystemVerilog | RTL design and HDL testbench for the decoder |
-| Verilator | Simulation backend for the Cocotb DFF test |
-| Cocotb | Python-based DFF and JK FF functional verification |
+| Verilator | Simulation backend for Cocotb-based sequential-logic tests |
+| Cocotb | Python-based functional verification for the flip-flop projects |
 | GTKWave | Waveform inspection when tracing is enabled and waveform data is generated |
 | Yosys | RTL synthesis in the ORFS flow |
 | OpenROAD / OpenROAD Flow Scripts | Floorplanning and subsequent physical-design stages |
@@ -66,4 +76,3 @@ A **positive-edge-triggered JK flip-flop** with an active-high asynchronous rese
 | Nangate45 | Educational standard-cell platform used by these runs |
 
 ---
-
