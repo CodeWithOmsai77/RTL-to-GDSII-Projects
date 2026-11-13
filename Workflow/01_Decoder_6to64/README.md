@@ -31,7 +31,18 @@ For each input value (I), exactly one output bit is high:
 
 `Y = 64'b1 << I`
 
-For example, when `I = 0`, `Y[0] = 1`. When `I = 5`, `Y[5] = 1`. All other output bits are zero.
+### Selected input-output examples
+
+| Input `I` (decimal) | Active output | Expected `Y` (hex) |
+|---:|---|---|
+| 0 | `Y[0]` | `0x0000000000000001` |
+| 1 | `Y[1]` | `0x0000000000000002` |
+| 5 | `Y[5]` | `0x0000000000000020` |
+| 31 | `Y[31]` | `0x0000000080000000` |
+| 32 | `Y[32]` | `0x0000000100000000` |
+| 63 | `Y[63]` | `0x8000000000000000` |
+
+These examples illustrate both ends of the 64-bit output vector and the transition across bit 31/32. For every legal 6-bit input, the output is one-hot: its population count is exactly one.
 
 ## 🧩 RTL Implementation
 
