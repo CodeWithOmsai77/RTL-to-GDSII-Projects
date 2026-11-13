@@ -62,6 +62,18 @@ The project includes SystemVerilog RTL, a Cocotb test, and OpenROAD physical-des
 
 ---
 
+## ⚠️ Verification and Timing Notes
+
+The project READMEs record important limitations that must be resolved before treating the results as signoff evidence:
+
+- **JK flip-flop:** the current SDC contains an input-delay constraint for port `D`, but the RTL interface uses `J` and `K`. Correct the constraints and review the timing reports before claiming a valid constrained timing analysis.
+- **SR flip-flop:** the current Cocotb test contains a state comparison that is not an `assert`, and the invalid `S=1, R=1` case needs an explicit checking policy. The recorded test result therefore does not establish that all intended checks are enforced.
+- **All physical-design examples:** generated layout, DEF, ODB, or GDS artifacts do not independently prove timing closure, DRC/LVS cleanliness, or signoff.
+
+See the individual [JK flip-flop notes](Workflow/03_JK_FF/README.md#-constraints-and-signoff-limitations) and [SR flip-flop notes](Workflow/04_SR_FF/README.md#-engineering-notes) before interpreting their results.
+
+---
+
 ## 🧰 Toolchain
 
 | Tool | How it is used here |
