@@ -35,6 +35,17 @@ Behavior:
 - When reset is inactive, `Q` captures `D` on `posedge clk`.
 - Between active clock edges, `Q` retains its stored value.
 
+### Event and state behavior
+
+| Event / condition | Expected behavior |
+|---|---|
+| Rising edge of `rst` | `Q` is cleared to 0 without waiting for a clock edge |
+| `rst = 0` and rising edge of `clk` | `Q` samples the current value of `D` |
+| No active clock or reset edge | `Q` retains its previous value |
+| Reset remains asserted across clock edges | Reset has priority; `Q` remains 0 |
+
+The asynchronous property is specifically about the reset assertion: the state does not need to wait for `posedge clk` to clear. Reset deassertion alone does not capture `D`; the next active clock edge does that.
+
 ## 🧩 RTL Implementation
 
 File: `Dff.sv`
