@@ -88,3 +88,26 @@ See the individual [JK flip-flop notes](Workflow/03_JK_FF/README.md#-constraints
 | Nangate45 | Educational standard-cell platform used by these runs |
 
 ---
+
+
+## Reproducing and Reviewing a Flow Run
+
+For each design, keep the following evidence with the project rather than relying only on a final GDS image:
+
+1. RTL source and the exact top-module name.
+2. Testbench source and the simulator command used.
+3. Synthesis and physical-design configuration, including the target platform.
+4. Constraint files and tool versions.
+5. Run logs and relevant reports from synthesis, placement, clock-tree synthesis and routing.
+6. Any warnings, failed checks or known limitations, with the next corrective action.
+
+### Evidence checklist
+
+- [ ] RTL simulation passes against the stated functional requirements.
+- [ ] Synthesis completes and the mapped netlist is inspected.
+- [ ] Clock and I/O constraints match the actual design ports.
+- [ ] Timing reports are reviewed for unconstrained paths and negative slack.
+- [ ] Physical verification results are checked where the flow provides them.
+- [ ] Claims about timing closure, DRC/LVS or signoff are made only when the corresponding reports demonstrate them.
+
+A generated DEF, ODB or GDS artifact demonstrates that a flow stage produced output; it does not independently prove that the design passed timing or physical signoff.
